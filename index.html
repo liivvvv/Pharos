@@ -2,173 +2,294 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pharos - Ficthon</title>
-  <!-- Link para o arquivo de estilos -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pharos – Ficthon</title>
   <link rel="stylesheet" href="style.css">
+  <!-- MODIFICADO: Adicionar Font Awesome (opcional, para ícones) - Remova se não for usar -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-  <!-- Navbar fixada -->
+  <!-- Navbar -->
   <header id="navbar" class="navbar">
     <div class="nav-left">
-      <!-- Logos -->
-      <img src="imagens/senac-logo.png" class="logo">
-      <img src="imagens/ficthon-logo.png" alt="Logo Ficthon" class="logo">
-      <img src="imagens/ods13-logo.jpg" alt="Logo ODS 13" class="logo">
+      <!-- MODIFICADO: Adicionado id para estilização específica se necessário -->
+      <img src="imagens/logo-pharos.PNG" alt="Pharos" class="logo logo-pharos-nav"> <!-- Assumindo um logo Pharos pequeno para o nav -->
+      <img src="imagens/senac-logo.png"   alt="Senac" class="logo logo-parceiros">
+      <img src="imagens/ficthon-logo.png" alt="Ficthon" class="logo logo-parceiros">
+      <img src="imagens/ods13-logo.jpg"   alt="ODS 13" class="logo logo-parceiros">
+    </div>
+    <div id="nav-toggle" class="nav-toggle">
+      <span></span><span></span><span></span>
     </div>
     <nav class="nav-right">
       <ul>
         <li><a href="#home">Home</a></li>
+        <li><a href="#exemplos">Exemplos</a></li> <!-- MODIFICADO: Adicionado link para nova seção -->
         <li><a href="#features">Features</a></li>
-        <li><a href="#quem-somos">Quem Somos</a></li>
-        <li><a href="#sobre">Sobre</a></li>
-        <li><a href="#contato">Contato</a></li>
+        <li><a href="#personas">Experiências</a></li> <!-- MODIFICADO: Adicionado link para nova seção -->
+        <li><a href="#sobre">Visão</a></li> <!-- MODIFICADO: Renomeado para corresponder melhor -->
+        <li><a href="#diferencial">Diferencial</a></li> <!-- MODIFICADO: Adicionado link para nova seção -->
+        <li><a href="#equipe">Quem Somos</a></li>
+        <li><a href="#contato">Contato</a></li> <!-- MODIFICADO: Renomeado para linkar rodapé -->
       </ul>
     </nav>
   </header>
 
-  <!-- Seção Home: tela inteira com imagem de fundo e slogan -->
-  <section id="home" class="section home-section">
-    <div class="overlay">
-      <h1>Pharos</h1>
-      <p>Luz no seu caminho, segurança em sua vida.</p>
-    </div>
-  </section>
+  <main>
+    <!-- 1. Home -->
+    <section id="home" class="section home-section">
+      <div class="home-content">
+        <img src="imagens/logo-pharos.png" alt="Pharos" class="home-logo">
+        <h1>Pharos</h1>
+        <p>Luz no seu caminho, segurança em sua vida.</p>
+      </div>
+    </section>
 
-  <!-- Tela 2: Exemplos de desastres naturais -->
-  <section id="features" class="section features-section">
-    <div class="container">
-      <h2>Histórico de Desastres Naturais no Brasil</h2>
-      <div class="case-studies">
-        <div class="case">
-          <img src="imagens/desastre-rs.jpg" alt="Desastre no Rio Grande do Sul">
-          <p>Exemplo: Desastre no Rio Grande do Sul - Análise dos impactos e lições aprendidas.</p>
-        </div>
-        <div class="case">
-          <img src="imagens/desastre-petropolis.jpg" alt="Desastre em Petrópolis">
-          <p>Exemplo: Desastre em Petrópolis/RJ - Impactos e medidas emergenciais adotadas.</p>
+    <!-- 2. Exemplos (Cases) -->
+    <section id="exemplos" class="section bg-white">
+      <div class="container">
+        <h2>Histórico de Desastres Naturais no Brasil</h2>
+        <div class="case-studies">
+          <div class="case-text">
+            <!-- ADICIONAR SEU TEXTO AQUI -->
+            <p>O Brasil, devido à sua vasta extensão territorial e diversidade climática, enfrenta recorrentes desafios relacionados a desastres naturais. Eventos como deslizamentos de terra em regiões serranas, inundações em bacias hidrográficas e secas prolongadas no semiárido causam impactos sociais, econômicos e ambientais significativos.</p>
+            <p>Compreender o histórico e a recorrência desses eventos é crucial para o desenvolvimento de estratégias eficazes de prevenção e mitigação, onde a tecnologia, como a proposta pelo Pharos, pode desempenhar um papel vital na emissão de alertas e na coordenação de respostas rápidas.</p>
+          </div>
+          <div class="case-images">
+            <div class="case">
+              <img src="imagens/desastre-rs.jpg" alt="Desastre no RS">
+              <p class="caption">Enchentes no Rio Grande do Sul (2024)</p>
+            </div>
+            <div class="case">
+              <img src="imagens/desastre-petropolis.jpg" alt="Desastre em Petrópolis">
+              <p class="caption">Deslizamentos em Petrópolis/RJ (2022)</p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Tela 3: Vídeo do App Pharos -->
-  <section id="video" class="section video-section">
-    <div class="container">
-      <h2>Conheça o Pharos</h2>
-      <div class="video-container">
-        <!-- Substitua "caminho-do-video" pela URL real do vídeo -->
-        <video controls>
-          <source src="videos/pharos-demo.mp4" type="video/mp4">
-          Seu navegador não suporta o elemento de vídeo.
-        </video>
-      </div>
-      <p>Veja como o Pharos reúne tecnologia e inovação para oferecer soluções rápidas e seguras em situações de emergência.</p>
-    </div>
-  </section>
-
-  <!-- Tela 4: Experiências e personas -->
-  <section id="quem-somos" class="section personas-section">
-    <div class="container">
-      <h2>Experiências de Usuários</h2>
-      <div class="personas">
-        <!-- Cada bloco representa uma persona ou relato -->
-        <div class="persona">
-          <img src="imagens/persona1.png" alt="Persona 1">
-          <h3>João Silva</h3>
-          <p>"Com o Pharos, senti-me seguro e informado durante uma situação crítica. A interface intuitiva facilitou muito o acesso às informações."</p>
+    <!-- 3. Vídeo (Features) -->
+    <section id="features" class="section bg-light"> <!-- MODIFICADO: Fundo azul claro para contraste com celular -->
+      <div class="container features-container"> <!-- MODIFICADO: Classe extra para layout -->
+        <div class="features-text">
+           <h2>Conheça o Pharos</h2>
+           <p>Veja como o Pharos funciona na prática. Nosso aplicativo integra dados meteorológicos, geográficos e alertas da Defesa Civil para oferecer informações cruciais em tempo real.</p>
+           <ul>
+               <li><i class="fas fa-bell"></i> Alertas Personalizados por Localização</li>
+               <li><i class="fas fa-map-marked-alt"></i> Mapas de Risco Interativos</li>
+               <li><i class="fas fa-users"></i> Rede de Apoio Comunitária</li>
+               <li><i class="fas fa-shield-alt"></i> Informações de Segurança e Rotas de Fuga</li>
+           </ul>
         </div>
-        <div class="persona">
-          <img src="imagens/persona1.png" alt="Persona 2">
-          <h3>Maria Oliveira</h3>
-          <p>"Um aplicativo que realmente faz a diferença para pessoas que precisam de ajuda rápida e confiável."</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Tela 5: Visão de Futuro -->
-  <section id="sobre" class="section visao-section">
-    <div class="container">
-      <h2>Visão de Futuro</h2>
-      <p>Nosso objetivo é ampliar o alcance do Pharos para salvar vidas. Estimativas indicam que nossa tecnologia pode auxiliar milhares de pessoas durante desastres naturais, proporcionando uma comunicação eficaz e serviços de emergência integrados.</p>
-      <ul>
-        <li><strong>Alcance:</strong> Potencial para beneficiar mais de 100 mil usuários em áreas de risco.</li>
-        <li><strong>Crescimento:</strong> Expansão planejada para 5 novos estados nos próximos 2 anos.</li>
-        <li><strong>Parcerias:</strong> Colaborações estratégicas com órgãos de defesa civil e instituições acadêmicas.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Tela 6: Comparativo com concorrentes -->
-  <section id="contato" class="section comparativo-section">
-    <div class="container">
-      <h2>O Diferencial do Pharos</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Critério</th>
-            <th>Pharos</th>
-            <th>Concorrentes</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Atualização em tempo real</td>
-            <td>✔️</td>
-            <td>❌</td>
-          </tr>
-          <tr>
-            <td>Interface intuitiva</td>
-            <td>✔️</td>
-            <td>Variável</td>
-          </tr>
-          <tr>
-            <td>Integração com órgãos oficiais</td>
-            <td>✔️</td>
-            <td>Parcial</td>
-          </tr>
-          <tr>
-            <td>Suporte a emergências</td>
-            <td>✔️</td>
-            <td>Limitações</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- Tela 7: Equipe -->
-  <section id="equipe" class="section equipe-section">
-    <div class="container">
-      <h2>Nosso Time</h2>
-      <div class="equipe">
-        <div class="membro">
-          <img src="imagens/alexandre.png" alt="Alexandre Leite">
-          <h3>Alexandre Leite</h3>
-          <p>Responsável pelo desenvolvimento front-end e design.</p>
-        </div>
-        <div class="membro">
-          <img src="imagens/isadora.png" alt="Isadora Marcondes">
-          <h3>Isadora Marcondes</h3>
-          <p>Responsável pelo back-end e integrações com APIs.</p>
-        </div>
-        <div class="membro">
-          <img src="imagens/joao.png" alt="João Damasqui">
-          <h3>João Damasqui</h3>
-          <p>Gestão de projetos e estratégias de comunicação.</p>
+        <div class="video-wrapper">
+          <!-- ADICIONADO: Estrutura do celular -->
+          <div class="phone-frame">
+            <div class="phone-top">
+              <span class="camera"></span>
+              <span class="speaker"></span>
+            </div>
+            <div class="phone-screen">
+              <video controls poster="imagens/pharos-video-poster.png"> <!-- ADICIONADO: poster (imagem antes do play) -->
+                <source src="videos/pharos-demo.mp4" type="video/mp4">
+                Seu navegador não suporta vídeo.
+              </video>
+            </div>
+            <div class="phone-bottom">
+              <span class="home-button"></span>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Rodapé -->
-  <footer class="footer">
-    <p>&copy; 2025 Pharos - Ficthon. Todos os direitos reservados.</p>
+    <!-- 4. Experiências de Usuários -->
+    <section id="personas" class="section bg-dark curve-right-bottom"> <!-- MANTIDO: Curva e fundo escuro -->
+      <div class="container">
+        <h2>O Que Dizem Nossos Usuários</h2> <!-- MODIFICADO: Título mais direto -->
+        <div class="personas">
+          <div class="persona card"> <!-- ADICIONADO: classe card -->
+            <img src="imagens/persona1.jpg" alt="João Silva">
+            <h3>João Silva</h3>
+            <span>Morador de Área de Risco</span> <!-- ADICIONADO: Cargo/Contexto -->
+            <p>“Durante as últimas chuvas fortes, o alerta do Pharos chegou antes de qualquer outra notícia. Consegui tirar minha família a tempo. Senti-me seguro pela primeira vez.”</p>
+          </div>
+          <div class="persona card"> <!-- ADICIONADO: classe card -->
+            <img src="imagens/persona2.jpg" alt="Maria Oliveira">
+            <h3>Maria Oliveira</h3>
+            <span>Voluntária da Defesa Civil</span> <!-- ADICIONADO: Cargo/Contexto -->
+            <p>“O Pharos facilita a comunicação e o mapeamento das áreas afetadas. É um aplicativo que realmente faz a diferença na coordenação das ajudas.”</p>
+          </div>
+          <!-- ADICIONADO: Mais 2 personas -->
+          <div class="persona card">
+            <img src="imagens/persona3.jpg" alt="Carlos Souza"> <!-- ADICIONAR IMAGEM REAL -->
+            <h3>Carlos Souza</h3>
+            <span>Pequeno Comerciante</span>
+            <p>“Receber o aviso de inundação pelo app me deu tempo de proteger meu estoque. O prejuízo foi muito menor graças ao Pharos.”</p>
+          </div>
+          <div class="persona card">
+            <img src="imagens/persona4.jpg" alt="Ana Pereira"> <!-- ADICIONAR IMAGEM REAL -->
+            <h3>Ana Pereira</h3>
+            <span>Estudante Universitária</span>
+            <p>“Uso o Pharos para saber as condições do tempo e alertas no caminho para a faculdade. A interface é super fácil de usar e me sinto mais tranquila.”</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Visão de Futuro -->
+    <section id="sobre" class="section bg-medium curve-left-bottom"> <!-- MANTIDO: Curva e fundo médio -->
+      <div class="container">
+        <h2>Nossa Visão de Futuro</h2>
+        <p>Acreditamos no poder da informação e da tecnologia para construir comunidades mais resilientes. Nosso objetivo é expandir o alcance do Pharos, transformando-o na principal ferramenta de prevenção e alerta de desastres naturais no Brasil.</p>
+        <!-- MODIFICADO: Layout com Ícones (usando Font Awesome como exemplo) -->
+        <div class="visao-futuro-grid">
+            <div class="visao-item">
+                <i class="fas fa-users fa-3x"></i> <!-- Ícone -->
+                <h3>Alcance Ampliado</h3>
+                <p>+100.000 usuários em áreas de risco nos próximos 2 anos.</p>
+            </div>
+            <div class="visao-item">
+                <i class="fas fa-map-signs fa-3x"></i> <!-- Ícone -->
+                <h3>Expansão Nacional</h3>
+                <p>Presença em pelo menos 5 novos estados prioritários.</p>
+            </div>
+            <div class="visao-item">
+                <i class="fas fa-hands-helping fa-3x"></i> <!-- Ícone -->
+                <h3>Parcerias Estratégicas</h3>
+                <p>Integração com Defesa Civil Nacional, universidades e ONGs.</p>
+            </div>
+             <div class="visao-item">
+                <i class="fas fa-cogs fa-3x"></i> <!-- Ícone -->
+                <h3>Novas Funcionalidades</h3>
+                <p>Incorporar IA para previsões mais precisas e recursos offline.</p>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Diferencial do Pharos -->
+    <section id="diferencial" class="section bg-light curve-right-bottom"> <!-- MODIFICADO: Renomeado ID, mantido fundo claro e curva -->
+      <div class="container">
+        <h2>O Diferencial do Pharos</h2>
+        <p>Em um cenário com diversas fontes de informação, o Pharos se destaca por sua abordagem integrada, facilidade de uso e foco na segurança do usuário.</p>
+        <!-- MODIFICADO: Tabela com estilo melhorado -->
+        <div class="table-container"> <!-- Wrapper para possível scroll em telas pequenas -->
+          <table>
+            <thead>
+              <tr>
+                <th>Critério</th><th>Pharos <i class="fas fa-star gold-star"></i></th><th>Outras Soluções</th> <!-- Ícone opcional -->
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Alertas em Tempo Real Personalizados</td><td class="check">✔️</td><td class="check">✔️</td></tr>
+              <tr><td>Interface Intuitiva e Acessível</td><td class="check">✔️</td><td class="variable">Variável</td></tr>
+              <tr><td>Integração Oficial (Defesa Civil)</td><td class="check">✔️</td><td class="partial">Parcial / Nenhuma</td></tr>
+              <tr><td>Mapa de Risco Detalhado</td><td class="check">✔️</td><td class="variable">Limitado</td></tr>
+              <tr><td>Rede de Apoio Comunitário</td><td class="check">✔️</td><td class="cross">❌</td></tr>
+              <tr><td>Foco Exclusivo em Desastres Naturais</td><td class="check">✔️</td><td class="variable">Geralmente Não</td></tr>
+              <tr><td>Funcionalidades Offline (Planejado)</td><td class="check">✔️</td><td class="cross">❌</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Nosso Time -->
+    <section id="equipe" class="section bg-white"> <!-- MANTIDO: Fundo branco -->
+      <div class="container">
+        <h2>Nosso Time</h2>
+        <p>Estudantes do Senac dedicados a criar soluções inovadoras com impacto social.</p>
+        <div class="equipe">
+          <div class="membro card"> <!-- ADICIONADO: classe card -->
+            <img src="imagens/alexandre.png" alt="Alexandre Leite">
+            <h3>Alexandre Leite</h3>
+            <p>Desenvolvedor Front-end & UI/UX Design</p>
+          </div>
+          <div class="membro card"> <!-- ADICIONADO: classe card -->
+            <img src="imagens/isadora.png" alt="Isadora Marcondes">
+            <h3>Isadora Marcondes</h3>
+            <p>Desenvolvedora Back-end & Gestão de APIs</p>
+          </div>
+          <div class="membro card"> <!-- ADICIONADO: classe card -->
+            <img src="imagens/joao.png" alt="João Damasqui">
+            <h3>João Damasqui</h3>
+            <p>Gerente de Projetos & Análise de Requisitos</p>
+          </div>
+          <!-- ADICIONADO: Mais 4 membros (adicione imagens e dados reais) -->
+           <div class="membro card">
+            <img src="imagens/livia.png" alt="Livia Cavalcanti">
+            <h3>Livia Cavalcanti</h3>
+            <p>Cargo Membro 4</p>
+          </div>
+           <div class="membro card">
+            <img src="imagens/lukas.png" alt="Lukas Mello">
+            <h3>Lukas Mello</h3>
+            <p>Cargo Membro 5</p>
+          </div>
+           <div class="membro card">
+            <img src="imagens/natani.png" alt="Natani Moraes">
+            <h3>Natani Moraes</h3>
+            <p>Cargo Membro 6</p>
+          </div>
+           <div class="membro card">
+            <img src="imagens/raica.png" alt="Raica Freitas">
+            <h3>Raica Freitas</h3>
+            <p>Cargo Membro 7</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Rodapé (azul bem claro) -->
+  <footer id="contato" class="footer">
+    <div class="container footer-container"> <!-- MODIFICADO: Adicionado container e classe -->
+        <div class="footer-left">
+            <img src="imagens/logo-pharos.PNG" alt="Pharos" class="footer-logo"> <!-- Usar logo apropriada -->
+            <p>Pharos – Luz no seu caminho, segurança em sua vida.</p>
+            <div class="social-icons">
+                <!-- Use <a> com <i> do Font Awesome ou <img> para os ícones -->
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        <div class="footer-right">
+            <div class="footer-links">
+                <h4>Navegação</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#sobre">Visão</a></li>
+                    <li><a href="#equipe">Quem Somos</a></li>
+                </ul>
+            </div>
+             <div class="footer-links">
+                <h4>Projeto</h4>
+                <ul>
+                    <li><a href="#">Documentação</a></li>
+                    <li><a href="#">Sobre o Ficthon</a></li>
+                    <li><a href="#">ODS 13</a></li>
+                </ul>
+            </div>
+             <div class="footer-links">
+                <h4>Contato</h4>
+                <ul>
+                    <li><a href="#">Fale Conosco</a></li>
+                    <li><a href="#">Parcerias</a></li>
+                    <li><a href="#">Imprensa</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2024 Pharos – Projeto Ficthon Senac. Todos os direitos reservados.</p> <!-- MODIFICADO: Ano e texto -->
+    </div>
   </footer>
 
-  <!-- Link para o arquivo de JavaScript -->
   <script src="script.js"></script>
 </body>
 </html>

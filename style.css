@@ -1,231 +1,756 @@
+/* 1. Variáveis de cor */
+:root {
+  --blue-dark:   #001D3D; /* Azul Marinho Escuro */
+  --blue-medium: #003566; /* Azul Médio (ajustado p/ contraste) */
+  --blue-light:  #EAF2F8; /* Azul Muito Claro / Quase Branco */
+  --blue-accent: #4A90E2; /* Azul Acento (novo) */
+  --white:       #FFFFFF;
+  --gold:        #FFC300; /* Dourado/Amarelo (ajustado p/ mais vibrante) */
+  --text-dark:   #212529; /* Cinza Escuro para Texto */
+  --text-light:  #F8F9FA; /* Cinza Claro para Texto em fundo escuro */
+  --gray-medium: #6C757D; /* Cinza Médio */
+}
+
+/* 2. Reset e scroll suave */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  /* Estilos da Navbar */
-  .navbar {
-    position: fixed;
-    top: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* MODIFICADO: Fonte mais moderna */
+  line-height: 1.6;
+  color: var(--text-dark);
+}
+
+/* 3. Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 10px 30px; /* MODIFICADO: Mais padding lateral */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(0, 29, 61, 0.9); /* MODIFICADO: Usa --blue-dark com transparência */
+  transition: background-color 0.3s ease, padding 0.3s ease; /* MODIFICADO: Transição de padding */
+  z-index: 1000;
+}
+.navbar.scrolled {
+  background-color: rgba(0, 29, 61, 0.7); /* MODIFICADO: Mais transparente no scroll */
+  padding: 5px 30px; /* MODIFICADO: Navbar menor no scroll */
+}
+.navbar:hover {
+  background-color: rgba(0, 29, 61, 0.95); /* MODIFICADO: Escurece um pouco mais no hover */
+}
+.nav-left { /* ADICIONADO: Alinhamento vertical */
+  display: flex;
+  align-items: center;
+}
+.nav-left .logo {
+  height: 35px; /* MODIFICADO: Altura padrão para logos no nav */
+  margin-right: 15px; /* MODIFICADO: Mais espaço entre logos */
+  vertical-align: middle; /* Garante alinhamento */
+}
+.nav-left .logo-pharos-nav { /* ADICIONADO: Estilo específico se necessário */
+    height: 40px; /* Logo principal um pouco maior */
+}
+
+.nav-right ul {
+  list-style: none;
+  display: flex;
+  align-items: center; /* ADICIONADO: Alinha itens verticalmente */
+}
+.nav-right ul li {
+  margin-left: 25px; /* MODIFICADO: Aumenta o espaçamento entre os links */
+}
+.nav-right ul li a {
+  text-decoration: none;
+  color: var(--white);
+  font-weight: 500;
+  font-size: 1.05rem; /* MODIFICADO: Fonte ligeiramente maior */
+  padding: 5px 0; /* ADICIONADO: Espaço vertical para hover */
+  position: relative; /* ADICIONADO: Para pseudo-elemento */
+  transition: color 0.3s ease;
+}
+.nav-right ul li a::after { /* ADICIONADO: Linha sutil no hover */
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--gold);
+    transition: width 0.3s ease;
+}
+.nav-right ul li a:hover {
+  color: var(--gold);
+}
+.nav-right ul li a:hover::after { /* ADICIONADO: Expande a linha no hover */
     width: 100%;
-    padding: 10px 20px;
+}
+
+
+/* Hamburger (mobile) - Mantido */
+.nav-toggle { display: none; flex-direction: column; cursor: pointer; }
+.nav-toggle span { width: 25px; height: 3px; background-color: var(--white); margin: 4px 0; transition: all 0.3s ease; }
+
+/* 4. Base das seções */
+.section {
+  width: 100%;
+  padding: 100px 40px; /* MODIFICADO: Mais padding */
+  overflow: hidden; /* Mantido */
+}
+.section h2 { /* ADICIONADO: Estilo padrão para títulos de seção */
+    font-size: 2.5rem;
+    color: var(--blue-dark);
+    margin-bottom: 40px; /* MODIFICADO: Mais espaço abaixo do título */
+    text-align: center;
+    font-weight: 600;
+}
+.section p { /* ADICIONADO: Estilo padrão para parágrafos de seção */
+    max-width: 800px; /* Limita largura para melhor leitura */
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--gray-medium);
+}
+
+/* 5. Curvas */
+.curve-right-bottom { border-bottom-right-radius: 50px; } /* MODIFICADO: Raio maior */
+.curve-left-bottom { border-bottom-left-radius: 50px; } /* MODIFICADO: Raio maior */
+
+/* 6. Sobreposição */
+.curve-right-bottom + .section,
+.curve-left-bottom + .section {
+  margin-top: -50px; /* Ajustado para novo raio */
+  padding-top: calc(100px + 50px); /* Ajustado para novo raio */
+}
+
+/* 7. Backgrounds e Cores de Texto por seção */
+.bg-white  { background-color: var(--white); }
+.bg-white h2, .bg-white h3 { color: var(--blue-dark); }
+.bg-white p { color: var(--text-dark); }
+
+.bg-dark   { background-color: var(--blue-dark); }
+.bg-dark h2, .bg-dark h3, .bg-dark p, .bg-dark span, .bg-dark li { color: var(--text-light); } /* MODIFICADO: Cor de texto clara */
+
+.bg-medium { background-color: var(--blue-medium); }
+.bg-medium h2, .bg-medium h3, .bg-medium p, .bg-medium li, .bg-medium strong { color: var(--text-light); } /* MODIFICADO: Cor de texto clara */
+.bg-medium .visao-item i { color: var(--gold); } /* Destaque para ícones */
+
+.bg-light  { background-color: var(--blue-light); }
+.bg-light h2 { color: var(--blue-dark); }
+.bg-light p { color: var(--text-dark); }
+
+/* 8. Container central */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px; /* ADICIONADO: Pequeno padding interno */
+}
+
+/* 9. Home */
+.home-section {
+  position: relative;
+  height: 100vh;
+  background: url('imagens/pharos.jpg') no-repeat center center/cover;
+  /* background-position: center 27%; */ /* Removido para deixar centralizado */
+  display: flex; /* ADICIONADO: Para facilitar alinhamento */
+  align-items: center; /* ADICIONADO: Alinha conteúdo verticalmente */
+}
+.home-section::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(rgba(0, 29, 61, 0.6), rgba(0, 29, 61, 0.8)); /* MODIFICADO: Gradiente sutil */
+  z-index: 1;
+}
+.home-content {
+  position: relative; /* MODIFICADO: Não mais absolute */
+  z-index: 2;
+  padding: 30px 40px;
+  text-align: left;
+  max-width: 600px; /* ADICIONADO: Limita largura */
+  margin-left: 10%; /* MODIFICADO: Controla posição pela margem esquerda */
+  /* right: 15%; */ /* REMOVIDO: Controlado por margin-left */
+}
+.home-logo {
+  display: block;
+  width: 150px; /* MODIFICADO: Logo maior */
+  margin-bottom: 25px; /* MODIFICADO: Mais espaço */
+}
+.home-content h1 {
+  color: var(--white);
+  font-size: 3.8rem; /* MODIFICADO: Título bem maior */
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.home-content p {
+  color: var(--text-light); /* MODIFICADO: Cor mais suave que branco puro */
+  font-size: 1.4rem; /* MODIFICADO: Parágrafo maior */
+  max-width: none; /* Sobrescreve padrão da seção */
+  text-align: left; /* Sobrescreve padrão da seção */
+  margin-left: 0; /* Sobrescreve padrão da seção */
+}
+
+/* 10. Cases */
+.case-studies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px; /* MODIFICADO: Mais espaço */
+  align-items: center; /* MODIFICADO: Alinha verticalmente */
+  margin-top: 40px;
+}
+.case-text {
+  flex: 1 1 48%; /* Ajuste leve */
+  min-width: 300px;
+  color: var(--text-dark);
+  padding-right: 20px; /* Espaço antes das imagens */
+}
+.case-text p { /* Resetando centralização do padrão da seção */
+    text-align: left;
+    max-width: none;
+    margin-left: 0;
+}
+.case-images {
+  flex: 1 1 48%; /* Ajuste leve */
+  min-width: 300px;
+  display: flex;
+  flex-direction: column; /* Mantido */
+  gap: 30px; /* MODIFICADO: Mais espaço */
+}
+.case {
+  background-color: var(--white); /* Garante fundo branco caso a seção mude */
+  border-radius: 12px; /* MODIFICADO: Bordas mais arredondadas */
+  overflow: hidden; /* Garante que a imagem respeite o border-radius */
+  box-shadow: 0 5px 15px rgba(0, 40, 85, 0.1); /* MODIFICADO: Sombra sutil */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.case:hover {
+    transform: translateY(-5px); /* Efeito de levantar */
+    box-shadow: 0 8px 25px rgba(0, 40, 85, 0.15);
+}
+.case img {
+  width: 100%;
+  height: auto;
+  display: block; /* Remove espaço extra abaixo da imagem */
+}
+.case .caption {
+  margin: 0; /* Removido margin-top */
+  padding: 15px; /* MODIFICADO: Padding interno */
+  font-size: 1rem; /* MODIFICADO: Tamanho de fonte */
+  color: var(--blue-medium); /* MODIFICADO: Cor */
+  text-align: center;
+  font-weight: 500;
+}
+
+/* 11. Vídeo (Features) */
+.features-container { /* ADICIONADO: Layout Flex para texto e vídeo */
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.9); /* cor forte por padrão */
-    transition: background-color 0.3s ease;
-    z-index: 1000;
-  }
-  
-  .nav-left .logo {
-    height: 40px;
-    margin-right: 10px;
-  }
-  
-  .nav-right ul {
+    gap: 40px;
+}
+.features-text {
+    flex: 1 1 45%; /* Ocupa +/- metade */
+    min-width: 300px;
+    text-align: left; /* Sobrescreve padrão centralizado da seção */
+}
+.features-text h2, .features-text p {
+    text-align: left; /* Garante alinhamento à esquerda */
+    margin-left: 0;
+}
+.features-text ul { /* Estilo para lista de features */
     list-style: none;
+    padding-left: 0;
+    margin-top: 20px;
+}
+.features-text ul li {
+    margin-bottom: 10px;
+    color: var(--text-dark);
     display: flex;
-  }
-  
-  .nav-right ul li {
-    margin-left: 20px;
-  }
-  
-  .nav-right ul li a {
-    text-decoration: none;
-    color: #fff;
-    font-weight: 500;
-    transition: color 0.3s;
-  }
-  
-  .nav-right ul li a:hover {
-    color: #f0f0f0;
-  }
-  
-  /* Seção Home */
-  .home-section {
-    height: 100vh;
-    background: url('imagens/pharos.jpg') no-repeat center center/cover;
+    align-items: center;
+}
+.features-text ul li i { /* Estilo para ícones */
+    color: var(--blue-accent);
+    margin-right: 10px;
+    width: 20px; /* Largura fixa para alinhamento */
+    text-align: center;
+}
+
+.video-wrapper {
+  flex: 1 1 50%; /* Ocupa +/- metade */
+  min-width: 300px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0; /* Removido margin padrão */
+}
+.video-bg-shape { /* Removido - substituído pelo frame do celular */
+  /* display: none; */
+}
+.video-container { /* Removido - lógica movida para .phone-frame */
+ /* display: none; */
+}
+
+/* ADICIONADO: Estilos do Frame do Celular */
+.phone-frame {
+    position: relative;
+    width: 300px; /* Largura do celular */
+    height: 600px; /* Altura do celular */
+    background-color: #111; /* Cor do corpo do celular */
+    border-radius: 40px; /* Bordas arredondadas */
+    padding: 15px; /* Espaçamento interno para a tela */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3), inset 0 0 5px rgba(255,255,255,0.1); /* Sombra e brilho interno */
+    margin: 0 auto; /* Centraliza se for o único elemento */
+}
+.phone-top {
+    height: 25px; /* Altura do 'notch'/'bezel' superior */
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-  }
-  
-  .home-section .overlay {
-    background-color: rgba(0, 0, 0, 0.4);
+    margin-bottom: 5px;
+}
+.phone-top .camera {
+    width: 8px;
+    height: 8px;
+    background-color: #333;
+    border-radius: 50%;
+    margin: 0 10px;
+}
+.phone-top .speaker {
+    width: 50px;
+    height: 6px;
+    background-color: #333;
+    border-radius: 3px;
+}
+.phone-screen {
+    width: 100%;
+    height: calc(100% - 40px - 10px); /* Altura total - top - bottom - margens */
+    background-color: black; /* Fundo da tela */
+    border-radius: 25px; /* Bordas internas da tela */
+    overflow: hidden; /* Esconde o que sair da tela */
+}
+.phone-screen video {
     width: 100%;
     height: 100%;
+    display: block;
+    object-fit: cover; /* Garante que o vídeo cubra a área */
+}
+.phone-bottom {
+    height: 10px; /* Espaço abaixo da tela */
+    /* Pode adicionar um botão home simulado aqui se quiser */
+    /* .home-button { ... } */
+}
+
+/* 12. Personas / Experiências */
+.personas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px; /* MODIFICADO: Espaço entre cards */
+  justify-content: center; /* Mantido */
+  margin-top: 40px; /* ADICIONADO: Espaço após título */
+}
+.persona { /* Estilo base removido, movido para .card */
+  flex: 1 1 45%; /* MODIFICADO: Para grid 2x2 */
+  max-width: calc(50% - 15px); /* Garante 2 colunas com gap */
+  min-width: 280px;
+  text-align: center;
+}
+.persona.card { /* ADICIONADO: Estilo de Card */
+    background-color: var(--blue-medium); /* Fundo um pouco mais claro que o da seção */
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.persona.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+.persona img {
+  width: 100px; /* MODIFICADO: Imagem menor */
+  height: 100px; /* MODIFICADO: Imagem menor */
+  border-radius: 50%;
+  margin-bottom: 15px; /* MODIFICADO: Mais espaço */
+  border: 3px solid var(--gold); /* ADICIONADO: Destaque na foto */
+}
+.persona h3 {
+    margin-bottom: 5px;
+    font-size: 1.4rem;
+    color: var(--white); /* Garante cor */
+}
+.persona span { /* ADICIONADO: Estilo para Cargo/Contexto */
+    display: block;
+    font-size: 0.9rem;
+    color: var(--blue-light); /* Cor mais suave */
+    margin-bottom: 15px;
+    font-style: italic;
+}
+.persona p {
+    font-size: 1rem;
+    color: var(--text-light); /* Garante cor */
+    max-width: none; /* Sobrescreve padrão */
+    text-align: center; /* Garante centralização */
+    margin-left: 0; /* Sobrescreve padrão */
+    line-height: 1.5;
+}
+.persona p::before { /* ADICIONADO: Aspas estilizadas */
+    content: '“';
+    font-size: 1.5em;
+    color: var(--gold);
+    margin-right: 5px;
+    position: relative;
+    top: 5px;
+}
+.persona p::after { /* ADICIONADO: Aspas estilizadas */
+    content: '”';
+    font-size: 1.5em;
+    color: var(--gold);
+    margin-left: 5px;
+    position: relative;
+    top: 5px;
+}
+
+
+/* 13. Visão de Futuro (Ícones e Grid) */
+.visao-futuro-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Grid responsivo */
+    gap: 30px;
+    margin-top: 40px;
+    text-align: center;
+}
+.visao-item {
+    background-color: rgba(255, 255, 255, 0.1); /* Fundo sutil */
+    padding: 30px;
+    border-radius: 10px;
+}
+.visao-item i { /* Ícone */
+    margin-bottom: 15px;
+    color: var(--gold); /* Cor definida no bg-medium */
+}
+.visao-item h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: var(--white); /* Garante cor */
+}
+.visao-item p {
+    font-size: 1rem;
+    color: var(--text-light); /* Garante cor */
+    max-width: none; /* Sobrescreve padrão */
+    text-align: center; /* Garante centralização */
+    margin-left: 0; /* Sobrescreve padrão */
+    margin-bottom: 0;
+}
+/* Remover estilo de lista padrão se ainda existir */
+#sobre ul { list-style: none; padding: 0; }
+#sobre li { margin-bottom: 10px; }
+
+
+/* 14. Diferencial (Tabela) */
+.table-container { /* ADICIONADO: Wrapper */
+    overflow-x: auto; /* Permite scroll horizontal em telas pequenas */
+    margin-top: 30px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse; /* Mantido */
+  margin: 0; /* Removida margem padrão */
+  background-color: var(--white); /* Fundo branco para a tabela */
+  box-shadow: 0 5px 15px rgba(0, 40, 85, 0.08); /* Sombra sutil */
+  border-radius: 8px; /* Borda arredondada */
+  overflow: hidden; /* Para o radius funcionar com o thead */
+}
+table thead {
+  background-color: var(--blue-medium); /* MODIFICADO: Cor de fundo do cabeçalho */
+  color: var(--white);
+}
+table th {
+    padding: 15px 12px; /* MODIFICADO: Mais padding */
+    border: none; /* Removida borda padrão */
+    text-align: left; /* MODIFICADO: Alinhar texto à esquerda */
+    font-weight: 600;
+    font-size: 1.05rem;
+}
+table td {
+  padding: 15px 12px; /* MODIFICADO: Mais padding */
+  border: none; /* Removida borda padrão */
+  border-bottom: 1px solid var(--blue-light); /* Linha separadora sutil */
+  text-align: left; /* MODIFICADO: Alinhar texto à esquerda */
+  vertical-align: middle; /* ADICIONADO: Alinha verticalmente */
+}
+table tbody tr:last-child td {
+    border-bottom: none; /* Remove borda da última linha */
+}
+table tbody tr:nth-child(even) {
+  background-color: var(--blue-light); /* MODIFICADO: Cor alternada suave */
+}
+table tbody tr:hover {
+    background-color: #d8e8f3; /* Cor de hover */
+}
+
+/* ADICIONADO: Estilos para Células da Tabela */
+table th:nth-child(2), table td:nth-child(2) { /* Coluna Pharos */
+    text-align: center;
+    font-weight: bold;
+}
+table th:nth-child(3), table td:nth-child(3) { /* Coluna Concorrentes */
+    text-align: center;
+}
+td.check { color: #28a745; font-size: 1.2em; } /* Verde para Check */
+td.cross { color: #dc3545; font-size: 1.2em; } /* Vermelho para Cross */
+td.partial { color: var(--gray-medium); } /* Cinza para Parcial */
+td.variable { color: var(--blue-accent); font-style: italic; } /* Azul para Variável */
+.gold-star { color: var(--gold); margin-left: 5px; } /* Estrela Dourada */
+
+
+/* 15. Equipe */
+.equipe {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px; /* MODIFICADO: Espaço entre cards */
+  justify-content: center; /* Mantido */
+  margin-top: 40px; /* ADICIONADO */
+}
+.membro { /* Estilo base removido, movido para .card */
+  flex: 1 1 280px; /* MODIFICADO: Base flexível */
+  max-width: 300px; /* Limite máximo */
+  text-align: center;
+}
+.membro.card { /* ADICIONADO: Estilo de Card */
+    background-color: var(--blue-light);
+    padding: 30px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 40, 85, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.membro.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 40, 85, 0.15);
+}
+.membro img {
+  width: 140px; /* MODIFICADO: Levemente menor */
+  height: 140px; /* MODIFICADO: Levemente menor */
+  border-radius: 50%;
+  margin-bottom: 15px; /* Mantido */
+  border: 4px solid var(--white); /* Borda para destacar */
+  box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Sombra na imagem */
+}
+.membro h3 {
+    margin-bottom: 5px;
+    font-size: 1.3rem;
+    color: var(--blue-dark);
+}
+.membro p {
+    font-size: 1rem;
+    color: var(--blue-medium);
+    max-width: none; /* Sobrescreve padrão */
+    text-align: center; /* Garante centralização */
+    margin-left: 0; /* Sobrescreve padrão */
+    margin-bottom: 0; /* Remove margem extra */
+}
+
+/* 16. Rodapé */
+.footer {
+  background-color: var(--blue-dark); /* MODIFICADO: Fundo escuro */
+  color: var(--text-light); /* MODIFICADO: Texto claro */
+  padding: 60px 40px 20px 40px; /* MODIFICADO: Mais padding superior */
+  text-align: left; /* MODIFICADO: Alinhamento padrão à esquerda */
+}
+.footer-container { /* ADICIONADO: Layout Flex */
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 40px; /* Espaço antes do copyright */
+}
+.footer-left {
+    flex: 1 1 300px; /* Ocupa espaço, base 300px */
+    margin-right: 30px; /* Espaço à direita */
+}
+.footer-logo {
+    height: 45px; /* Tamanho da logo no rodapé */
+    margin-bottom: 15px;
+}
+.footer-left p {
+    font-size: 0.95rem;
+    color: var(--blue-light); /* Cor suave */
+    margin-bottom: 20px;
+    text-align: left; /* Sobrescreve padrão */
+    max-width: none;
+}
+.social-icons a {
+    color: var(--text-light);
+    font-size: 1.5rem; /* Tamanho dos ícones */
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+.social-icons a:hover {
+    color: var(--gold);
+}
+.footer-right {
+    flex: 2 1 500px; /* Ocupa mais espaço, base 500px */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: space-between; /* Espaça as colunas de links */
+}
+.footer-links {
+    flex: 1 1 150px; /* Colunas de links flexíveis */
+}
+.footer-links h4 {
+    font-size: 1.1rem;
+    color: var(--white);
+    margin-bottom: 15px;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 5px;
+}
+.footer-links h4::after { /* Linha sutil abaixo do título */
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    background-color: var(--gold);
+}
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+.footer-links ul li {
+    margin-bottom: 8px;
+}
+.footer-links ul li a {
+    text-decoration: none;
+    color: var(--blue-light);
+    font-size: 0.95rem;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+}
+.footer-links ul li a:hover {
+    color: var(--gold);
+    padding-left: 5px; /* Efeito de indentação no hover */
+}
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid var(--blue-medium); /* Linha separadora */
+    font-size: 0.9rem;
+    color: var(--gray-medium);
+}
+
+
+/* 17. Responsividade */
+@media (max-width: 992px) {
+    .home-content {
+        margin-left: 5%; /* Aproxima mais da borda */
+        max-width: 80%;
+    }
+    .home-content h1 { font-size: 3rem; }
+    .home-content p { font-size: 1.2rem; }
+
+    .features-container {
+        flex-direction: column; /* Empilha texto e vídeo */
+    }
+    .features-text { text-align: center; }
+    .features-text h2, .features-text p { text-align: center; max-width: 600px; margin: 0 auto 20px auto;}
+    .features-text ul { display: inline-block; text-align: left; } /* Centraliza a lista mas mantém texto alinhado */
+    .video-wrapper { margin-top: 30px; }
+
+    .persona {
+      max-width: calc(50% - 15px); /* Ainda tenta 2 colunas */
+    }
+
+    .footer-right {
+        justify-content: flex-start; /* Alinha colunas de links à esquerda */
+    }
+}
+
+@media (max-width: 768px) {
+  /* Navbar mobile - Mantido como estava */
+  .nav-toggle { display: flex; }
+  .nav-right ul {
+    display: none;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: #fff;
+    background-color: rgba(0, 29, 61, 0.95); /* Fundo mais opaco */
+    position: absolute;
+    top: 60px; /* Ajustar se a altura do navbar mudar */
+    right: 0; /* Alinhado à direita */
+    width: 220px; /* Um pouco mais largo */
+    padding: 15px 0;
+    border-bottom-left-radius: 8px; /* Borda arredondada */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
   }
-  
-  .home-section h1 {
-    font-size: 4rem;
-    margin-bottom: 20px;
-  }
-  
-  .home-section p {
-    font-size: 1.5rem;
-  }
-  
-  /* Seções Gerais */
-  .section {
-    padding: 80px 20px;
-  }
-  
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  /* Tela 2: Cases */
-  .features-section h2,
-  .video-section h2,
-  .personas-section h2,
-  .visao-section h2,
-  .comparativo-section h2,
-  .equipe-section h2 {
-    text-align: center;
-    margin-bottom: 40px;
-  }
-  
-  /* Cases */
-  .case-studies {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-  }
-  
-  .case {
-    flex: 1 1 300px;
-    text-align: center;
-  }
-  
-  .case img {
+  .nav-right ul.active { display: flex; }
+  .nav-right ul li {
+    margin: 10px 0; /* Espaçamento vertical */
+    text-align: center; /* Centraliza texto */
+    padding: 0 20px; /* Padding lateral interno */
     width: 100%;
-    height: auto;
-    border-radius: 8px;
   }
-  
-  /* Tela 3: Vídeo */
-  .video-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
+  .nav-right ul li a { font-size: 1.1rem; }
+  .nav-right ul li a::after { display: none; } /* Remove linha do hover no mobile */
+
+  /* Ajustes gerais */
+  .section { padding: 80px 20px; }
+  .section h2 { font-size: 2rem; margin-bottom: 30px; }
+  .curve-right-bottom + .section,
+  .curve-left-bottom + .section {
+    margin-top: -50px;
+    padding-top: calc(80px + 50px);
   }
-  
-  .video-container video {
-    width: 100%;
-    max-width: 800px;
-    border-radius: 8px;
-  }
-  
-  /* Tela 4: Personas */
-  .personas {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-  }
-  
-  .persona {
-    flex: 1 1 300px;
-    text-align: center;
-  }
-  
-  .persona img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-  }
-  
-  /* Tela 6: Tabela comparativa */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-  }
-  
-  table thead {
-    background-color: #333;
-    color: #fff;
-  }
-  
-  table th, table td {
-    padding: 12px;
-    border: 1px solid #ccc;
-    text-align: center;
-  }
-  
-  /* Tela 7: Equipe */
-  .equipe {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-  }
-  
-  .membro {
-    flex: 1 1 250px;
-    text-align: center;
-  }
-  
-  .membro img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-  }
-  
-  /* Rodapé */
-  .footer {
-    background-color: #222;
-    color: #ccc;
+
+  /* Ajustes Home */
+  .home-content {
+    top: auto; /* Remove posicionamento antigo */
+    position: relative;
+    margin: 0 auto; /* Centraliza */
     text-align: center;
     padding: 20px;
+    max-width: 90%;
   }
-  
-  /* Efeito de rolagem suave */
-  html {
-    scroll-behavior: smooth;
-  }
-  
-  /* Navbar - alteração de transparência ao scroll */
-  .navbar.scrolled {
-    background-color: rgba(0, 0, 0, 0.4);
-  }
-  
-  .navbar:hover {
-    background-color: rgba(0, 0, 0, 0.9);
-  }
-  
-  /* Responsividade */
-  @media (max-width: 768px) {
-    .nav-right ul {
-      flex-direction: column;
-      background-color: rgba(0, 0, 0, 0.9);
-      position: absolute;
-      top: 60px;
-      right: 20px;
-      padding: 10px;
-      display: none;
+  .home-logo { margin: 0 auto 20px auto; } /* Centraliza logo */
+  .home-content h1 { font-size: 2.8rem; text-align: center; }
+  .home-content p { font-size: 1.1rem; text-align: center; }
+
+  /* Cases vira coluna */
+  .case-studies { flex-direction: column; gap: 30px; }
+  .case-text, .case-images { flex: 1 1 100%; padding-right: 0; }
+
+  /* Personas vira coluna única */
+   .persona {
+      max-width: 90%; /* Ocupa quase toda a largura */
+      flex-basis: 100%;
     }
-  
-    .nav-right ul.active {
-      display: block;
-    }
-  
-    .nav-right ul li {
-      margin: 10px 0;
-    }
-  
-    /* Você pode adicionar um botão de menu para dispositivos móveis se necessário */
-  }  
+
+   /* Tabela scroll */
+    table th, table td { white-space: nowrap; } /* Evita quebra de linha forçada */
+
+   /* Time vira coluna única */
+   .membro {
+       max-width: 80%;
+       flex-basis: 100%;
+   }
+
+   /* Rodapé */
+   .footer-container { flex-direction: column; text-align: center; }
+   .footer-left { margin-right: 0; margin-bottom: 30px; }
+   .footer-logo { margin: 0 auto 15px auto; }
+   .footer-left p { text-align: center; }
+   .social-icons { text-align: center; }
+   .footer-right { flex-direction: column; align-items: center; }
+   .footer-links { text-align: center; flex-basis: auto; width: 100%; }
+   .footer-links h4::after { left: 50%; transform: translateX(-50%); } /* Centraliza linha */
+
+}
