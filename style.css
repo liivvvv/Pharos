@@ -56,8 +56,7 @@ body {
 .bg-white { background-color: var(--white); }
 .bg-white h2, .bg-white h3 { color: var(--blue-dark); }
 .bg-white p { color: var(--text-dark); }
-.bg-dark { background-color: var(--blue-dark); }
-.bg-dark h2, .bg-dark h3, .bg-dark p, .bg-dark span, .bg-dark li { color: var(--text-light); }
+/* Seção Planos agora usa bg-light, então bg-dark não é mais usado onde estava Personas */
 .bg-medium { background-color: var(--blue-medium); }
 .bg-medium h2, .bg-medium h3, .bg-medium p, .bg-medium li, .bg-medium strong { color: var(--text-light); }
 .bg-medium .visao-item i { color: var(--gold); }
@@ -68,70 +67,76 @@ body {
 /* 8. Container central */
 .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
 
-/* 9. Home */
-.home-section {
-  position: relative;
-  height: 100vh;
-  background: url('imagens/pharos.jpg') no-repeat center/cover;
-  display: flex;
-  align-items: center;
-}
-.home-section::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: linear-gradient(rgba(39, 54, 71, 0.6), rgba(39, 54, 71, 0.6));
-  z-index: 1;
-}
-.home-content {
-  position: relative;
-  z-index: 2;
-  padding: 30px 40px;
-  max-width: 550px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-left: 50%;
-}
-.home-logo {
-  display: block;
-  width: 120px;
-  margin-bottom: 20px;
-}
-.home-content h1 {
-  font-family: 'Alegreya', serif;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: var(--white);
-  font-size: 3.8rem;
-  margin-bottom: 15px;
-  text-align: left;
-}
-.home-content p {
-  color: var(--text-light);
-  font-size: 1.4rem;
-  max-width: none;
-  text-align: left;
-  margin: 0;
-}
+/* 9. Home (como estava no seu último código) */
+.home-section { position: relative; height: 100vh; background: url('imagens/pharos.jpg') no-repeat center/cover; display: flex; align-items: center; }
+.home-section::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(39, 54, 71, 0.6), rgba(39, 54, 71, 0.6)); z-index: 1; }
+.home-content { position: relative; z-index: 2; padding: 30px 40px; max-width: 550px; display: flex; flex-direction: column; align-items: flex-start; margin-left: 50%; }
+.home-logo { display: block; width: 120px; margin-bottom: 20px; }
+.home-content h1 { font-family: 'Alegreya', serif; text-transform: uppercase; font-weight: 600; color: var(--white); font-size: 3.8rem; margin-bottom: 15px; text-align: left; }
+.home-content p { color: var(--text-light); font-size: 1.4rem; max-width: none; text-align: left; margin: 0; }
 
 /* 10. Cases */
-.case-studies { display: flex; gap: 50px; align-items: flex-start; margin-top: 40px; }
-.case-text { flex: 1 1 48%; min-width: 300px; color: var(--text-dark); padding-right: 20px; }
-.case-text p { text-align: justify; max-width: none; margin-left: 0; font-size: 1.1rem; }
-.case-images { flex: 1 1 48%; min-width: 300px; display: flex; flex-direction: column; gap: 30px; }
+.case-studies {
+  display: flex;
+  /* flex-wrap: wrap; */
+  gap: 40px;
+  align-items: flex-start;
+  margin-top: 40px;
+}
+.case-text {
+  flex: 1 1 50%; /* Pode ajustar a proporção, ex: 50% ou 60% */
+  min-width: 0; /* Para permitir encolher mais se necessário sem wrap */
+  color: var(--text-dark);
+  padding-right: 20px;
+}
+.case-text p {
+  text-align: justify;
+  max-width: none;
+  margin-left: 0;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+}
+/* Estilo para o destaque de estatísticas */
+.stats-highlight {
+  background-color: var(--blue-light);
+  border-left: 5px solid var(--blue-accent);
+  padding: 15px 20px;
+  margin: 25px 0;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-radius: 0 8px 8px 0;
+}
+.stats-highlight i {
+  color: var(--blue-accent);
+}
+.stats-highlight p {
+  margin-bottom: 0;
+  text-align: left;
+  color: var(--blue-dark);
+  font-size: 1.1rem;
+}
+.stats-highlight p strong {
+  font-weight: 700;
+}
+.case-images {
+  flex: 1 1 45%; /* Ajustar para complementar .case-text */
+  min-width: 0; /* Para permitir encolher mais se necessário sem wrap */
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
 .case { background-color: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 40, 85, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; }
 .case:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0, 40, 85, 0.15); }
 .case img { width: 100%; height: auto; display: block; }
 .case .caption { margin: 0; padding: 15px; font-size: 1rem; color: var(--blue-medium); text-align: center; font-weight: 500; }
 
-/* 11. Vídeo (Features) */
+/* 11. Vídeo (Features) - RESTAURADO */
 .features-container { display: flex; flex-wrap: wrap; align-items: center; gap: 40px; }
 .features-text { flex: 1 1 45%; min-width: 300px; text-align: left; }
 .features-text h2, .features-text p { text-align: left; margin-left: 0; }
-.features-text p { color: var(--text-dark); } 
-.features-text p strong { font-weight: 600; color: var(--blue-medium); } 
+.features-text p { color: var(--text-dark); margin-bottom: 15px;}
+.features-text p strong { font-weight: 700; color: var(--blue-medium); }
 .features-text ul { list-style: none; padding-left: 0; margin-top: 20px; }
 .features-text ul li { margin-bottom: 10px; color: var(--text-dark); display: flex; align-items: center; }
 .features-text ul li i { color: var(--blue-accent); margin-right: 10px; width: 20px; text-align: center; }
@@ -144,28 +149,127 @@ body {
 .phone-screen video { width: 100%; height: 100%; display: block; object-fit: cover; }
 .phone-bottom { height: 10px; }
 
-/* 12. Personas / Experiências */
-.personas { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; margin-top: 40px; }
-.persona { flex: 1 1 45%; max-width: calc(50% - 15px); min-width: 280px; text-align: center; }
-.persona.card { background-color: var(--blue-medium); padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease, box-shadow 0.3s ease; }
-.persona.card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); }
-.persona img { width: 100px; height: 100px; border-radius: 50%; margin-bottom: 15px; border: 3px solid var(--gold); object-fit: cover; }
-.persona h3 { margin-bottom: 5px; font-size: 1.4rem; color: var(--white); }
-.persona span { display: block; font-size: 0.9rem; color: var(--blue-light); margin-bottom: 15px; font-style: italic; }
-.persona p { font-size: 1rem; color: var(--text-light); max-width: none; text-align: center; margin-left: 0; line-height: 1.5; }
-.persona p::before { content: '“'; font-size: 1.5em; color: var(--gold); margin-right: 5px; position: relative; top: 5px; }
-.persona p::after { content: '”'; font-size: 1.5em; color: var(--gold); margin-left: 5px; position: relative; top: 5px; }
+/* 12. SEÇÃO PLANOS */
+#planos { /* Adicionando especificidade com ID para garantir que as regras se apliquem */
+  /* A classe .bg-light e .curve-left-bottom já devem estar na <section> no HTML */
+}
+#planos .container h2 { /* Estilo para o título da seção de planos */
+  /* Seu estilo padrão para .section h2 já se aplica */
+}
+#planos .container > p { /* Estilo para o parágrafo introdutório da seção de planos */
+  /* Seu estilo padrão para .section p já se aplica, mas podemos ajustar se necessário */
+  margin-bottom: 40px; /* Mais espaço antes do grid de planos */
+}
+.planos-grid {
+  display: grid;
+  /* Tenta encaixar colunas com largura mínima de 250px, permitindo que cresçam até 1fr.
+     Ideal para 4 colunas em telas largas (aprox. 1100px de container + gaps).
+     Se a tela for menor, auto-ajusta para 3, 2 ou 1 coluna. */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px; /* Espaço entre os cards */
+  margin-bottom: 40px; /* Espaço após o grid de planos de usuário */
+}
+.plano-card {
+  background-color: var(--white);
+  border: 1px solid #e0e0e0; /* Borda um pouco mais suave */
+  border-radius: 10px;
+  padding: 25px; /* Padding interno do card */
+  text-align: left; /* Alinhamento padrão do texto no card */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07); /* Sombra sutil */
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-height: 420px; /* Altura mínima para consistência visual, ajuste se necessário */
+}
+.plano-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+.plano-header {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.plano-header h3 {
+  font-size: 1.4rem; /* Ajustado para melhor encaixe em 4 colunas */
+  color: var(--blue-dark);
+  margin-bottom: 8px;
+  /* Tenta manter altura consistente para o título, mesmo com uma ou duas linhas */
+  min-height: 2.8em; /* (1.4rem * 1.6 line-height * ~1.25 para duas linhas) - ajuste se necessário */
+  display: flex; /* Para centralizar verticalmente se o título for menor */
+  align-items: center;
+  justify-content: center;
+  line-height: 1.4;
+}
+.plano-preco {
+  font-size: 1.9rem; /* Ajustado */
+  font-weight: 700; /* Alterado de bold para 700 para consistência */
+  color: var(--blue-accent);
+  margin-bottom: 2px;
+  line-height: 1.2;
+}
+.plano-preco .periodo {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--gray-medium);
+  margin-left: 4px;
+}
+.plano-anual {
+  font-size: 0.8rem;
+  color: var(--gray-medium);
+  margin-bottom: 15px;
+  text-align: center; /* Garante centralização se o preço também for */
+}
+.plano-publico {
+  font-size: 0.85rem; /* Ajustado */
+  color: var(--text-dark);
+  margin-bottom: 15px;
+  font-style: italic;
+  text-align: left;
+  line-height: 1.5;
+  min-height: 2.5em; /* Para descrição em até duas linhas */
+}
+.plano-features {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 20px;
+  flex-grow: 1; /* Faz a lista ocupar o espaço disponível, empurrando o que vier depois para baixo */
+}
+.plano-features li {
+  margin-bottom: 7px;
+  font-size: 0.85rem; /* Ajustado */
+  color: var(--text-dark);
+  line-height: 1.4;
+  padding-left: 5px; /* Pequeno recuo para o texto após o check */
+}
+.plano-features li::before { /* Adiciona o check customizado se quiser, senão use o ✅ direto no HTML */
+  /* content: '✓'; */ /* Descomente e estilize se quiser um check CSS */
+  /* color: var(--blue-accent); */
+  /* margin-right: 8px; */
+  /* font-weight: bold; */
+}
+/* Estilo para os subtítulos dentro da seção de planos */
+.subtitle-planos-usuarios,
+.subtitle-planos-institucionais {
+    font-size: 1.8rem; /* Ou o tamanho que achar adequado */
+    color: var(--blue-dark);
+    text-align: center;
+    margin-top: 50px; /* Espaço antes do subtítulo */
+    margin-bottom: 25px; /* Espaço antes do grid de planos */
+    font-weight: 600;
+}
+.subtitle-planos-usuarios {
+    margin-top: 0; /* O primeiro subtítulo não precisa de tanto espaço acima se já houver o título da seção */
+}
 
-/* 13. Visão de Futuro */
+/* 13. Visão de Futuro (SOBRE) */
 .visao-futuro-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 40px; text-align: center; }
 .visao-item { background-color: rgba(255, 255, 255, 0.1); padding: 30px; border-radius: 10px; }
 .visao-item i { margin-bottom: 15px; color: var(--gold); }
 .visao-item h3 { font-size: 1.3rem; margin-bottom: 10px; color: var(--white); }
 .visao-item p { font-size: 1rem; color: var(--text-light); max-width: none; text-align: center; margin-left: 0; margin-bottom: 0; }
-#sobre ul { list-style: none; padding: 0; }
-#sobre li { margin-bottom: 10px; }
+/* Classe .ods-destaque e .ods-logo-visao REMOVIDAS se não usadas */
 
-/* 14. Diferencial (Tabela) */
+/* 14. Diferencial (Tabela) - RESTAURADA */
 .table-container { overflow-x: auto; margin-top: 30px; }
 table { width: 100%; border-collapse: collapse; margin: 0; background-color: var(--white); box-shadow: 0 5px 15px rgba(0, 40, 85, 0.08); border-radius: 8px; overflow: hidden; }
 table thead { background-color: var(--blue-medium); color: var(--white); }
@@ -180,7 +284,7 @@ td.check { color: #28a745; font-size: 1.2em; } td.cross { color: #dc3545; font-s
 td.partial { color: var(--gray-medium); } td.variable { color: var(--blue-accent); font-style: italic; }
 .gold-star { color: var(--gold); margin-left: 5px; }
 
-/* 15. Equipe */
+/* 15. Equipe - RESTAURADA */
 .equipe { display: flex; flex-wrap: wrap; gap: 25px; justify-content: center; margin-top: 40px; }
 .membro { flex: 0 1 calc(25% - 25px); min-width: 240px; max-width: 280px; text-align: center; }
 .membro.card { background-color: var(--blue-light); padding: 30px 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 40, 85, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column; align-items: center; height: 100%; }
@@ -189,12 +293,12 @@ td.partial { color: var(--gray-medium); } td.variable { color: var(--blue-accent
 .membro h3 { margin-bottom: 5px; font-size: 1.3rem; color: var(--blue-dark); }
 .membro p { font-size: 1rem; color: var(--blue-medium); max-width: none; text-align: center; margin-left: 0; margin-bottom: 0; flex-grow: 1; }
 
-/* 16. Rodapé */
+/* 16. Rodapé - RESTAURADO */
 .footer { background-color: var(--blue-dark); color: var(--text-light); padding: 60px 40px 20px 40px; text-align: left; }
 .footer-container { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px; margin-bottom: 40px; }
 .footer-left { flex: 1 1 300px; margin-right: 30px; }
 .footer-logo { height: 45px; margin-bottom: 15px; }
-.footer-left p { font-size: 0.95rem; color: var(--blue-light); margin-bottom: 20px; text-align: left; max-width: none; }
+.footer-left p { font-size: 0.95rem; color: var(--blue-light); margin-bottom: 10px; text-align: left; max-width: none; }
 .social-icons a { color: var(--text-light); font-size: 1.5rem; margin-right: 15px; transition: color 0.3s ease; }
 .social-icons a:hover { color: var(--gold); }
 .footer-right { flex: 2 1 500px; display: flex; flex-wrap: wrap; gap: 30px; justify-content: space-between; }
@@ -207,101 +311,49 @@ td.partial { color: var(--gray-medium); } td.variable { color: var(--blue-accent
 .footer-links ul li a:hover { color: var(--gold); padding-left: 5px; }
 .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid var(--blue-medium); font-size: 0.9rem; color: var(--gray-medium); }
 
-/* 17. Responsividade */
-
-/* Telas Médias/Tablets (ex: < 992px) */
-@media (max-width: 991.98px) {
-    .home-content {
-        margin-left: 50%;
-        max-width: 45%; 
-        padding: 20px; 
-    }
-    .home-content h1 { font-size: 3rem; } 
-    .home-content p { font-size: 1.1rem; } 
-
+/* 17. Responsividade (ajustes podem ser necessários para .case-studies e .planos-grid) */
+@media (max-width: 991.98px) { /* Tablet */
+    .home-content { margin-left: 50%; max-width: 45%; padding: 20px; }
+    .home-content h1 { font-size: 3rem; }
+    .home-content p { font-size: 1.1rem; }
     .features-container { flex-direction: column; }
     .features-text { text-align: center; }
     .features-text h2, .features-text p { text-align: center; max-width: 600px; margin: 0 auto 20px auto;}
-    .features-text ul { display: inline-block; text-align: left; }
+    /* .features-text ul { display: inline-block; text-align: left; } */ /* Lista foi removida */
     .video-wrapper { margin-top: 30px; }
-
-    .persona { max-width: calc(50% - 15px); }
     .membro { flex: 0 1 calc(33.33% - 25px); }
     .footer-right { justify-content: flex-start; }
+    .planos-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); } /* Tenta 2 ou 3 planos */
+    .case-studies { flex-direction: column; } /* Força coluna em tablet para .case-studies */
+    .case-text, .case-images { flex-basis: 100%; padding-right: 0; }
 }
 
-/* Telas Pequenas/Mobile (ex: < 768px) */
-@media (max-width: 767.98px) {
-  /* Navbar mobile */
+@media (max-width: 767.98px) { /* Mobile */
   .nav-toggle { display: flex; }
   .nav-right ul { display: none; flex-direction: column; background-color: rgba(0, 29, 61, 0.95); position: absolute; top: 60px; right: 0; width: 220px; padding: 15px 0; border-bottom-left-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
   .nav-right ul.active { display: flex; }
   .nav-right ul li { margin: 10px 0; text-align: center; padding: 0 20px; width: 100%; }
   .nav-right ul li a { font-size: 1.1rem; }
   .nav-right ul li a::after { display: none; }
-
-  /* Ajustes gerais */
   .section { padding: 60px 20px 70px 20px; }
   .section h2 { font-size: 2rem; margin-bottom: 25px; }
   .curve-right-bottom + .section,
   .curve-left-bottom + .section { margin-top: -50px; padding-top: calc(60px + 50px); }
-
-
-  /* === AJUSTES HOME MOBILE === */
-   .home-section {
-       justify-content: center;
-       align-items: center; 
-       height: 80vh; 
-    }
-  .home-content {
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center; 
-    padding: 20px;
-    max-width: 90%;
-    align-items: center; 
-    margin-top: 0; 
-  }
-  .home-logo {
-      margin: 0 auto 20px auto; 
-      width: 100px;
-    }
-  .home-content h1 {
-      font-size: 2.5rem;
-      text-align: center;
-      margin-right: 0; 
-      margin-left: 0; 
-    }
-  .home-content p {
-      font-size: 1.1rem;
-      text-align: center;
-      margin-left: 0; 
-      margin-right: 0; 
-      max-width: 100%;
-    }
-  /* === FIM AJUSTES HOME MOBILE === */
-
-
-  /* Cases vira coluna */
+   .home-section { justify-content: center; align-items: center; height: auto; min-height: 80vh; padding: 40px 0; }
+  .home-content { margin-left: auto; margin-right: auto; text-align: center; padding: 20px; max-width: 90%; align-items: center; margin-top: 0; }
+  .home-logo { margin: 0 auto 20px auto; width: 100px; }
+  .home-content h1 { font-size: 2.5rem; text-align: center; margin-right: 0; margin-left: 0; }
+  .home-content p { font-size: 1.1rem; text-align: center; margin-left: 0; margin-right: 0; max-width: 100%; }
   .case-studies { flex-direction: column; gap: 30px; }
   .case-text, .case-images { flex: 1 1 100%; padding-right: 0; }
-
-  /* Personas vira coluna */
-   .persona { max-width: 80%; flex-basis: 100%; }
-   @media (min-width: 576px) and (max-width: 767.98px) {
-     .persona { max-width: calc(50% - 15px); flex-basis: calc(50% - 15px); }
-   }
-
-   /* Tabela scroll */
-    table th, table td { white-space: nowrap; }
-
-   /* Time vira coluna */
+  .planos-grid { grid-template-columns: 1fr; } /* 1 plano por linha */
+  .subtitle-planos-institucionais { font-size: 1.5rem; }
+  .table-container { overflow-x: auto; } /* Garante scroll se a tabela for larga */
+  table th, table td { white-space: normal; } /* Permite quebra de linha na tabela mobile */
    .membro { flex: 0 1 80%; }
    @media (min-width: 576px) and (max-width: 767.98px) {
         .membro { flex: 0 1 calc(50% - 15px); }
    }
-
-   /* Rodapé */
    .footer-container { flex-direction: column; text-align: center; }
    .footer-left { margin-right: 0; margin-bottom: 30px; }
    .footer-logo { margin: 0 auto 15px auto; }
@@ -310,6 +362,53 @@ td.partial { color: var(--gray-medium); } td.variable { color: var(--blue-accent
    .footer-right { flex-direction: column; align-items: center; }
    .footer-links { text-align: center; flex-basis: auto; width: 100%; }
    .footer-links h4::after { left: 50%; transform: translateX(-50%); }
+}
+/* --- RESPONSIVIDADE PARA PLANOS --- */
+/* Telas Médias/Tablets (ex: < 992px) */
+@media (max-width: 991.98px) {
+  .planos-grid {
+      /* Tenta 2 colunas no tablet, com largura mínima maior */
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+  }
+  .plano-card {
+      min-height: auto; /* Remove altura mínima para permitir que se ajustem ao conteúdo */
+      padding: 20px;
+  }
+  .plano-header h3 {
+      font-size: 1.3rem;
+      min-height: 0; /* Remove min-height para títulos */
+  }
+  .plano-preco {
+      font-size: 1.8rem;
+  }
+  .plano-publico {
+      font-size: 0.9rem;
+      min-height: 0; /* Remove min-height para descrições */
+  }
+  .plano-features li {
+      font-size: 0.9rem;
+  }
+}
+/* Telas Pequenas/Mobile (ex: < 768px) */
+@media (max-width: 767.98px) {
+  .planos-grid {
+      grid-template-columns: 1fr; /* 1 plano por linha no mobile */
+      gap: 20px;
+  }
+  .plano-card {
+      min-height: auto; /* Garante que altura mínima não interfira */
+  }
+  .plano-header h3 {
+      font-size: 1.4rem; /* Pode aumentar um pouco no mobile se for 1 por linha */
+  }
+  .plano-preco {
+      font-size: 1.9rem;
+  }
+  .subtitle-planos-institucionais {
+      font-size: 1.6rem; /* Reduz título para mobile */
+      margin-top: 40px;
+  }
 }
 
 /* Animação do Hamburger */
